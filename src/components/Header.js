@@ -4,9 +4,12 @@ import MenuIcon from '@material-ui/icons/Menu';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import TodayIcon from '@material-ui/icons/Today';
 import DateRangeIcon from '@material-ui/icons/DateRange';
+import PersonIcon from '@material-ui/icons/Person';
 import { Toolbar ,AppBar, Typography,CssBaseline,Button,Box,IconButton, Drawer,List,ListItem } from '@material-ui/core';
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import {Link} from "react-router-dom"
+
+import "../App.css";
 
 const useStyles = makeStyles((theme) => ({
     logo:{
@@ -23,6 +26,11 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('xs')]:{
             display:'flex'
         }
+        },
+        toolbar:{
+            [theme.breakpoints.down('xs')]:{
+                paddingRight : '0px'
+            }
         }
 
 }));
@@ -38,8 +46,8 @@ function Header() {
     return (
         <>
             <CssBaseline/>
-            <AppBar position='relative'>
-                <Toolbar>
+            <AppBar position='relative' >
+                <Toolbar className={classes.toolbar}>
                     <NotificationsActiveRoundedIcon/>
                     <Typography varient='h5'className={classes.logo} style={{flexGrow:'1'}}>
                         Remind Me
@@ -49,10 +57,12 @@ function Header() {
                         <Button component={Link} to="/week">Week</Button>
                         <Button component={Link} to="/month">Month</Button>
                         <Button component={Link} to="/year">Year</Button>
+                        <Button aria-controls="profile-menu" aria-haspopup="true">Profile</Button>
                     </Box>
         {/* Mobile View */}
                     <IconButton className={classes.sectionMobile}>
                         <MenuIcon onClick={toggleDrawer}></MenuIcon>
+                        <PersonIcon style={{paddingLeft:'1vh'}}/>
                     </IconButton>
                 </Toolbar>
                 <Drawer anchor={'bottom'} open={isDrawerOpen} onClose ={toggleDrawer}>

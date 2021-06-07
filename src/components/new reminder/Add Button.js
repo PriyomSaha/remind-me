@@ -1,4 +1,5 @@
-import React from 'react'
+import React,{useState} from 'react'
+import Reminder from './Reminder'
 import {Fab} from "@material-ui/core"
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import AddIcon from '@material-ui/icons/Add';
@@ -28,18 +29,21 @@ const useStyles = makeStyles((theme) => ({
 
 function Add() {
     const classes =useStyles()
+
+    const [open, setOpen] = useState(false);
     return (
         <>
         <div className={classes.sectionMobile}>
-            <Fab color="primary" className={classes.add}>
+            <Fab color="primary" className={classes.add} onClick={()=> {setOpen(!open)}}>
                 <AddIcon/>
             </Fab>
         </div>
         <div className={classes.sectionDesktop}>
-        <Fab color="primary" variant="extended" className={classes.add}>
-            <AddIcon/> Add Remainder
+        <Fab color="primary" variant="extended" className={classes.add} onClick={()=> {setOpen(!open)}}>
+            <AddIcon/> Add Reminder
         </Fab>
-    </div>
+        </div>
+        <Reminder open={open} setOpen={setOpen}/>
     </>
     )
 }
