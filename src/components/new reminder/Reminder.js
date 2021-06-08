@@ -1,4 +1,4 @@
-import { Box, Dialog, InputAdornment,  TextField } from '@material-ui/core'
+import { Box, Button, Dialog,DialogContent, DialogActions, InputAdornment,  TextField } from '@material-ui/core'
 import React from 'react'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import alarmImage from "../assets/alarm.png"
@@ -12,6 +12,7 @@ box: {
     width:"100%",
     textAlign:"center",
     padding:theme.spacing(2),
+    paddingTop : theme.spacing(1),
 
 }
 }));
@@ -21,6 +22,7 @@ export default function Reminder({open,setOpen}) {
     return (
         <>
         <Dialog open={open} onClose={()=> {setOpen(!open)}}>
+        <DialogContent dividers>
             <Box className={classes.box}>
                 <img src={alarmImage} alt="Alarm" width="50%"/>
             </Box>
@@ -38,6 +40,11 @@ export default function Reminder({open,setOpen}) {
                 maxLength:100,
               }}/>
             </Box>
+            </DialogContent>
+            <DialogActions>
+                <Button variant="outlined" style={{color:"#f44336",borderColor:"#f44336"}} onClick={()=> {setOpen(!open)}}>Cancel</Button>
+                <Button variant="outlined" style={{color:"#4caf50",borderColor:"#4caf50"}}>Save</Button>
+            </DialogActions>
         </Dialog>
         </>
     )

@@ -5,7 +5,7 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import TodayIcon from '@material-ui/icons/Today';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import PersonIcon from '@material-ui/icons/Person';
-import { Toolbar ,AppBar, Typography,CssBaseline,Button,Box,IconButton, Drawer,List,ListItem } from '@material-ui/core';
+import { Toolbar ,AppBar, Typography,CssBaseline,Button,Box,IconButton, Drawer,List,ListItem, Menu,MenuItem } from '@material-ui/core';
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import {Link} from "react-router-dom"
 
@@ -42,6 +42,9 @@ function Header() {
         setIsDrawerOpen(!isDrawerOpen)
     })
 
+    const [profMenu, setprofMenu] = useState(null)
+    const handleProfMenuOpen = (e) =>{setprofMenu(e.currentTarget)}
+
     const classes =useStyles()
     return (
         <>
@@ -57,12 +60,12 @@ function Header() {
                         <Button component={Link} to="/week">Week</Button>
                         <Button component={Link} to="/month">Month</Button>
                         <Button component={Link} to="/year">Year</Button>
-                        <Button aria-controls="profile-menu" aria-haspopup="true">Profile</Button>
+                        <Button onClick={handleProfMenuOpen}>Profile</Button>
                     </Box>
         {/* Mobile View */}
                     <IconButton className={classes.sectionMobile}>
                         <MenuIcon onClick={toggleDrawer}></MenuIcon>
-                        <PersonIcon style={{paddingLeft:'1vh'}}/>
+                        <PersonIcon style={{paddingLeft:'1vh'}} onClick={handleProfMenuOpen}/>
                     </IconButton>
                 </Toolbar>
                 <Drawer anchor={'bottom'} open={isDrawerOpen} onClose ={toggleDrawer}>
@@ -81,6 +84,15 @@ function Header() {
                         </ListItem>
                     </List>
                 </Drawer>
+        {/* Profile dropdown Menu */}
+                <Menu open={Boolean(profMenu)} anchorEl={profMenu} onClose={()=>setprofMenu(null)}>
+                    <MenuItem onClick={()=>setprofMenu(null)}>
+                        My Account 
+                    </MenuItem>
+                    <MenuItem onClick={()=>setprofMenu(null)}>
+                        Signout
+                    </MenuItem>
+                </Menu>
             </AppBar>
         </>
     )
