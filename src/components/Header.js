@@ -5,7 +5,10 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import TodayIcon from '@material-ui/icons/Today';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import PersonIcon from '@material-ui/icons/Person';
-import { Toolbar ,AppBar, Typography,CssBaseline,Button,Box,IconButton, Drawer,List,ListItem, Menu,MenuItem } from '@material-ui/core';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
+import { Toolbar ,AppBar, Typography,CssBaseline,Button,Box,IconButton, Drawer,List,ListItem, Menu,MenuItem, 
+    ListItemIcon, ListItemText} from '@material-ui/core';
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import {Link} from "react-router-dom"
 
@@ -87,10 +90,16 @@ function Header() {
         {/* Profile dropdown Menu */}
                 <Menu open={Boolean(profMenu)} anchorEl={profMenu} onClose={()=>setprofMenu(null)}>
                     <MenuItem onClick={()=>setprofMenu(null)}>
-                        My Account 
+                    <ListItemIcon>
+                        <AccountCircleIcon fontSize="small" />
+                    </ListItemIcon>
+                        <ListItemText primary="My account" />
                     </MenuItem>
                     <MenuItem onClick={()=>setprofMenu(null)}>
-                        Signout
+                    <ListItemIcon>
+                        <ExitToAppTwoToneIcon fontSize="small" />
+                    </ListItemIcon>
+                        <ListItemText primary="Sign Out" />
                     </MenuItem>
                 </Menu>
             </AppBar>
