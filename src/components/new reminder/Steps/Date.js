@@ -22,7 +22,6 @@ function Date() {
           KeyboardButtonProps={{
             "aria-label": "change date"
           }}
-          fullWidth
         />
       </MuiPickersUtilsProvider>
     )

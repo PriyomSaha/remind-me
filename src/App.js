@@ -8,6 +8,7 @@ import {createMuiTheme, ThemeProvider} from "@material-ui/core/styles"
 import {BrowserRouter,Switch,Route} from "react-router-dom"
 
 import "./App.css";
+import Login from "./components/Beforelogin/Login";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Header/>
       <Add/>
+      <Login/>
       <Switch>
         <Route exact path="/week" component={Week}/>
         <Route exact path="/month" component={Month}/>
