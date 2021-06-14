@@ -2,7 +2,7 @@ import {React,useState} from 'react'
 import { Box, Dialog,DialogContent, DialogActions} from '@material-ui/core'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import alarmImage from "../assets/alarm.png"
-import StepsIndicator from "./StepsIndicator"  
+import StepsIndicator from "./Steps/StepsIndicator"  
 import stepsComp from "./Steps/StepsHandlerComponent"
 import "../../App.css"
 

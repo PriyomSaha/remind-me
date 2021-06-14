@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import NotificationsActiveRoundedIcon from '@material-ui/icons/NotificationsActiveRounded';
 import MenuIcon from '@material-ui/icons/Menu';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
@@ -13,6 +13,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 import {Link} from "react-router-dom"
 
 import "../App.css";
+import isUserin from "../config/UserContext"
 
 const useStyles = makeStyles((theme) => ({
     logo:{
@@ -40,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Header() {
+    const {setisSignedin} = useContext(isUserin)
     const [isDrawerOpen,setIsDrawerOpen] = useState(false)
     const toggleDrawer = (()=>{
         setIsDrawerOpen(!isDrawerOpen)
@@ -95,7 +97,7 @@ function Header() {
                     </ListItemIcon>
                         <ListItemText primary="My account" />
                     </MenuItem>
-                    <MenuItem onClick={()=>setprofMenu(null)}>
+                    <MenuItem onClick={()=>{setisSignedin(false) ; setprofMenu(null)}}>
                     <ListItemIcon>
                         <ExitToAppTwoToneIcon fontSize="small" />
                     </ListItemIcon>
