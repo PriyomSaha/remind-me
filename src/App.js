@@ -1,4 +1,4 @@
-import {React,useState} from 'react'
+import {React,useEffect,useState} from 'react'
 import Header from "./components/Header";
 import Add from "./components/new reminder/Add Button";
 import Week from "./components/pages/Week";
@@ -9,6 +9,8 @@ import isUserin from "./config/UserContext"
 
 import {createMuiTheme, ThemeProvider} from "@material-ui/core/styles"
 import {BrowserRouter,Switch,Route} from "react-router-dom"
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import "./App.css";
 import {auth} from './config/firebase'
@@ -17,15 +19,18 @@ import {auth} from './config/firebase'
 function App() {
 
 const [isSignedin, setisSignedin] = useState()
+const [ischecking, setisCheking] = useState(true)
 
- auth.onAuthStateChanged((user) => {
-    if (user) {
-      setisSignedin(true)
-    } else {
-      setisSignedin(false)
-    }
-  });
-  
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setisSignedin(true)
+      } else {
+        setisSignedin(false)
+      }
+      setisCheking(false)
+    });
+  }, [isSignedin])
 
   const theme = createMuiTheme({
     palette: {
@@ -39,7 +44,12 @@ const [isSignedin, setisSignedin] = useState()
   return (
     <BrowserRouter>
     <ThemeProvider theme={theme}>
-      <isUserin.Provider value={{isSignedin, setisSignedin}}>
+      {ischecking ? 
+      (<Backdrop open={ischecking} style={{backgroundColor: "#424242"}}>
+        <CircularProgress color="primary" />
+      </Backdrop>) 
+      : 
+      (<isUserin.Provider value={{isSignedin, setisSignedin}}>
       <Header/>
       <Add/>
       <Login/>
@@ -48,7 +58,8 @@ const [isSignedin, setisSignedin] = useState()
         <Route exact path="/month" component={Month}/>
         <Route exact path="/year" component={Year}/>
       </Switch>
-      </isUserin.Provider>
+      </isUserin.Provider>)
+}
     </ThemeProvider>
   </BrowserRouter>
   );

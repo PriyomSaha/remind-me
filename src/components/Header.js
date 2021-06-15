@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react'
+import React, { useState } from 'react'
 import NotificationsActiveRoundedIcon from '@material-ui/icons/NotificationsActiveRounded';
 import MenuIcon from '@material-ui/icons/Menu';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
@@ -13,7 +13,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 import {Link} from "react-router-dom"
 
 import "../App.css";
-import isUserin from "../config/UserContext"
+import { auth } from '../config/firebase';
 
 const useStyles = makeStyles((theme) => ({
     logo:{
@@ -41,7 +41,12 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Header() {
-    const {setisSignedin} = useContext(isUserin)
+    const handleSignout = async ()=>{
+        await auth.signOut();
+        setprofMenu(null)
+        }
+    
+
     const [isDrawerOpen,setIsDrawerOpen] = useState(false)
     const toggleDrawer = (()=>{
         setIsDrawerOpen(!isDrawerOpen)
@@ -97,7 +102,7 @@ function Header() {
                     </ListItemIcon>
                         <ListItemText primary="My account" />
                     </MenuItem>
-                    <MenuItem onClick={()=>{setisSignedin(false) ; setprofMenu(null)}}>
+                    <MenuItem onClick={handleSignout}>
                     <ListItemIcon>
                         <ExitToAppTwoToneIcon fontSize="small" />
                     </ListItemIcon>

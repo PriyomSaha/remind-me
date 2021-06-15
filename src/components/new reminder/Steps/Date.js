@@ -15,10 +15,11 @@ function Date() {
         <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils}>
         <KeyboardDatePicker
           margin="normal"
-          label="Date picker dialog"
+          label="Date picker"
           format="DD/MM/YYYY"
           value={selectedDate}
           onChange={handleDateChange}
+          color="secondary"
           KeyboardButtonProps={{
             "aria-label": "change date"
           }}
