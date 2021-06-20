@@ -1,6 +1,8 @@
 import {React,useContext} from 'react'
 import { google_provider, auth } from './firebase'
 import isUserin from "./UserContext"
+import {Button} from '@material-ui/core'
+import GoogleIcon from '@material-ui/icons/Google';
 
 function Google() {
 const {setisSignedin} = useContext(isUserin)
@@ -11,8 +13,15 @@ const {setisSignedin} = useContext(isUserin)
     }
     return (
         <div style={{float:'center'}}>
-             <br />
-            <button style={{ marginTop: '2%', color:'white', background:'red'}} onClick={gooleSignup}>Google SignUp</button>
+            <br />
+            <Button onClick={gooleSignup}
+                variant="contained"
+                color="default"
+                startIcon={<GoogleIcon/>}
+                fullWidth
+            >
+                Click To sign in
+      </Button>
         </div>
     )
 }

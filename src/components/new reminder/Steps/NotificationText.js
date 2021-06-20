@@ -6,16 +6,17 @@ function NotificationText() {
         <div>
           <TextField
             label="Reminder"
-            variant="outlined"
+            variant="standard"
             fullWidth
             color="secondary"
             multiline
-            rowsMax="3"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start"><AddAlertIcon/></InputAdornment>
-              ),
+            inputProps={{
               maxLength: 100
+            }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end"><AddAlertIcon/></InputAdornment>
+              )              
             }}
           />
         </div>

@@ -7,8 +7,7 @@ import DateRangeIcon from '@material-ui/icons/DateRange';
 import PersonIcon from '@material-ui/icons/Person';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ExitToAppTwoToneIcon from '@material-ui/icons/ExitToAppTwoTone';
-import { Toolbar ,AppBar, Typography,CssBaseline,Button,Box,IconButton, Drawer,List,ListItem, Menu,MenuItem, 
-    ListItemIcon, ListItemText} from '@material-ui/core';
+import { Toolbar ,AppBar, Typography,CssBaseline,Button,Box,IconButton, Drawer,List,ListItem,ListItemIcon, Menu,MenuItem, } from '@material-ui/core';
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import {Link} from "react-router-dom"
 
@@ -35,6 +34,11 @@ const useStyles = makeStyles((theme) => ({
             [theme.breakpoints.down('xs')]:{
                 paddingRight : '0px'
             }
+        },
+        menuButton : {
+            color : "#fff",
+            backgroundColor : theme.palette.grey[800],
+            boxShadow : '0px'
         }
 
 }));
@@ -100,13 +104,13 @@ function Header() {
                     <ListItemIcon>
                         <AccountCircleIcon fontSize="small" />
                     </ListItemIcon>
-                        <ListItemText primary="My account" />
+                    <Typography variant="inherit">My account</Typography>
                     </MenuItem>
-                    <MenuItem onClick={handleSignout}>
+                    <MenuItem onClick={handleSignout} >
                     <ListItemIcon>
                         <ExitToAppTwoToneIcon fontSize="small" />
                     </ListItemIcon>
-                        <ListItemText primary="Sign Out" />
+                    <Typography variant="inherit">Sign out</Typography>
                     </MenuItem>
                 </Menu>
             </AppBar>
