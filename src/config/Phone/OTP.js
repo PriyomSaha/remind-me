@@ -59,7 +59,7 @@ function OTP(isdisabled) {
                   setotp({ ...otp, otp1: "" });
                   refotp1.current.focus();
                 }
-                if (key === "Undefined" || !isNaN(key)) refotp2.current.focus();
+                if (key === "undefined" || !isNaN(key)) refotp2.current.focus();
               },
             }}
             value={otp.otp1}
@@ -92,7 +92,7 @@ function OTP(isdisabled) {
                   setotp({ ...otp, otp2: "" });
                   refotp1.current.focus();
                 }
-                if (key === "Undefined" || !isNaN(key)) refotp3.current.focus();
+                if (key === "undefined" || !isNaN(key)) refotp3.current.focus();
               },
             }}
             value={otp.otp2}
@@ -123,7 +123,7 @@ function OTP(isdisabled) {
                   setotp({ ...otp, otp3: "" });
                   refotp2.current.focus();
                 }
-                if (key === "Undefined" || !isNaN(key)) refotp4.current.focus();
+                if (key === "undefined" || !isNaN(key)) refotp4.current.focus();
               },
             }}
             value={otp.otp3}
@@ -154,7 +154,7 @@ function OTP(isdisabled) {
                   setotp({ ...otp, otp4: "" });
                   refotp3.current.focus();
                 }
-                if (key === "Undefined" || !isNaN(key)) refotp5.current.focus();
+                if (key === "undefined" || !isNaN(key)) refotp5.current.focus();
               },
             }}
             value={otp.otp4}
@@ -185,7 +185,7 @@ function OTP(isdisabled) {
                   setotp({ ...otp, otp5: "" });
                   refotp4.current.focus();
                 }
-                if (key === "Undefined" || !isNaN(key)) refotp6.current.focus();
+                if (key === "undefined" || !isNaN(key)) refotp6.current.focus();
               },
             }}
             value={otp.otp5}
@@ -216,7 +216,7 @@ function OTP(isdisabled) {
                   setotp({ ...otp, otp6: "" });
                   refotp5.current.focus();
                 }
-                if (key === "Undefined" || !isNaN(key)) refotp6.current.focus();
+                if (key === "undefined" || !isNaN(key)) refotp6.current.focus();
               },
             }}
             value={otp.otp6}
