@@ -32,7 +32,6 @@ function OTP(isdisabled) {
   const refotp5 = useRef(null);
   const refotp6 = useRef(null);
 
-  console.log(otp);
   return (
     <div className={classes.root}>
       <FormHelperText required>Enter OTP</FormHelperText>
@@ -41,12 +40,10 @@ function OTP(isdisabled) {
         <Grid item xs={2}>
           <TextField
             onChange={(e) => {
-              console.log(e);
               if (isNaN(e.target.value)) setError(true);
               else {
                 setError(false);
                 setotp({ ...otp, otp1: e.target.value });
-                refotp2.current.focus();
               }
             }}
             color="secondary"
@@ -56,6 +53,14 @@ function OTP(isdisabled) {
               inputmode: "numeric",
               pattern: "[0-9]*",
               style: { textAlign: "center" },
+              onKeyUpCapture: (e) => {
+                const { key } = e;
+                if (key === "Backspace") {
+                  setotp({ ...otp, otp1: "" });
+                  refotp1.current.focus();
+                }
+                if (key === "Undefined" || !isNaN(key)) refotp2.current.focus();
+              },
             }}
             value={otp.otp1}
             inputRef={refotp1}
@@ -69,16 +74,9 @@ function OTP(isdisabled) {
             onChange={(e) => {
               if (isNaN(e.target.value)) {
                 setError(true);
-              }
-              // //Check for backspace
-              // else if (e.target.value === "") {
-              //   setotp({ ...otp, otp2: "" });
-              //   refotp1.current.focus();
-              // }
-              else {
+              } else {
                 setError(false);
                 setotp({ ...otp, otp2: e.target.value });
-                refotp3.current.focus();
               }
             }}
             color="secondary"
@@ -90,7 +88,11 @@ function OTP(isdisabled) {
               style: { textAlign: "center" },
               onKeyUpCapture: (e) => {
                 const { key } = e;
-                alert(key);
+                if (key === "Backspace") {
+                  setotp({ ...otp, otp2: "" });
+                  refotp1.current.focus();
+                }
+                if (key === "Undefined" || !isNaN(key)) refotp3.current.focus();
               },
             }}
             value={otp.otp2}
@@ -106,7 +108,6 @@ function OTP(isdisabled) {
               else {
                 setError(false);
                 setotp({ ...otp, otp3: e.target.value });
-                refotp4.current.focus();
               }
             }}
             color="secondary"
@@ -116,6 +117,14 @@ function OTP(isdisabled) {
               inputmode: "numeric",
               pattern: "[0-9]*",
               style: { textAlign: "center" },
+              onKeyUpCapture: (e) => {
+                const { key } = e;
+                if (key === "Backspace") {
+                  setotp({ ...otp, otp3: "" });
+                  refotp2.current.focus();
+                }
+                if (key === "Undefined" || !isNaN(key)) refotp4.current.focus();
+              },
             }}
             value={otp.otp3}
             inputRef={refotp3}
@@ -130,7 +139,6 @@ function OTP(isdisabled) {
               else {
                 setError(false);
                 setotp({ ...otp, otp4: e.target.value });
-                refotp5.current.focus();
               }
             }}
             color="secondary"
@@ -140,6 +148,14 @@ function OTP(isdisabled) {
               inputmode: "numeric",
               pattern: "[0-9]*",
               style: { textAlign: "center" },
+              onKeyUpCapture: (e) => {
+                const { key } = e;
+                if (key === "Backspace") {
+                  setotp({ ...otp, otp4: "" });
+                  refotp3.current.focus();
+                }
+                if (key === "Undefined" || !isNaN(key)) refotp5.current.focus();
+              },
             }}
             value={otp.otp4}
             inputRef={refotp4}
@@ -154,7 +170,6 @@ function OTP(isdisabled) {
               else {
                 setError(false);
                 setotp({ ...otp, otp5: e.target.value });
-                refotp6.current.focus();
               }
             }}
             color="secondary"
@@ -164,12 +179,13 @@ function OTP(isdisabled) {
               inputmode: "numeric",
               pattern: "[0-9]*",
               style: { textAlign: "center" },
-              onKeyPress: (e) => {
+              onKeyUpCapture: (e) => {
                 const { key } = e;
                 if (key === "Backspace") {
-                  refotp4.current.focus();
                   setotp({ ...otp, otp5: "" });
+                  refotp4.current.focus();
                 }
+                if (key === "Undefined" || !isNaN(key)) refotp6.current.focus();
               },
             }}
             value={otp.otp5}
@@ -194,12 +210,13 @@ function OTP(isdisabled) {
               inputmode: "numeric",
               pattern: "[0-9]*",
               style: { textAlign: "center" },
-              onKeyPress: (e) => {
+              onKeyUpCapture: (e) => {
                 const { key } = e;
                 if (key === "Backspace") {
-                  refotp5.current.focus();
                   setotp({ ...otp, otp6: "" });
+                  refotp5.current.focus();
                 }
+                if (key === "Undefined" || !isNaN(key)) refotp6.current.focus();
               },
             }}
             value={otp.otp6}

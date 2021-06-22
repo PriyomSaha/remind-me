@@ -76,7 +76,7 @@ function PhoneDilog({ isPhoneDilogOpen, setisPhoneDilogOpen }) {
                 </Typography>
               </Slide>
             )}
-            <Collapse direction="right" in /*={isdisabled}*/>
+            <Collapse direction="right" in={isdisabled}>
               <OTP isdisabled={isdisabled} />
             </Collapse>
           </Box>
