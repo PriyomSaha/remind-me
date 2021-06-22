@@ -29,6 +29,7 @@ function PhoneDilog({ isPhoneDilogOpen, setisPhoneDilogOpen }) {
           <Box pb={2}>
             <Box pb={2}>
               <TextField
+                autoFocus
                 disabled={isdisabled}
                 fullWidth
                 required
@@ -75,8 +76,8 @@ function PhoneDilog({ isPhoneDilogOpen, setisPhoneDilogOpen }) {
                 </Typography>
               </Slide>
             )}
-            <Collapse timeout={2000} direction="right" in={isdisabled}>
-              <OTP />
+            <Collapse direction="right" in /*={isdisabled}*/>
+              <OTP isdisabled={isdisabled} />
             </Collapse>
           </Box>
         </DialogContent>
