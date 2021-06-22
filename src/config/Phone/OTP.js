@@ -88,11 +88,10 @@ function OTP(isdisabled) {
               inputmode: "numeric",
               pattern: "[0-9]*",
               style: { textAlign: "center" },
-              onKeyUpCapture: alert("key Up capture"),
-              onkeyup: alert("On Key up"),
-              onKeyDownCapture: alert("key down capture"),
-              onkeydown: alert("On Key down"),
-              onKeyPress: alert("On key press"),
+              onKeyUpCapture: (e) => {
+                const { key } = e;
+                alert(key);
+              },
             }}
             value={otp.otp2}
             inputRef={refotp2}
