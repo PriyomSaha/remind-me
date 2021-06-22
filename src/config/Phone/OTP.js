@@ -65,7 +65,6 @@ function OTP(isdisabled) {
 
         {/* OTP 2 */}
         <Grid item xs={2}>
-          {console.log(counter)}
           <TextField
             onChange={(e) => {
               if (isNaN(e.target.value)) {
