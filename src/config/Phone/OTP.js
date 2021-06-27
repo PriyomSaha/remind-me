@@ -25,10 +25,10 @@ function OTP(isdisabled) {
     refotp1.current.focus();
   }, [isdisabled]);
 
-  useEffect(() => {
-    const finalCode =
-      otp.otp1 + otp.otp2 + otp.otp3 + otp.otp4 + otp.otp5 + otp.otp6;
-  }, [otp]);
+  // useEffect(() => {
+  //   const finalCode =
+  //     otp.otp1 + otp.otp2 + otp.otp3 + otp.otp4 + otp.otp5 + otp.otp6;
+  // }, [otp]);
   // OTP box referances
   const refotp1 = useRef(null);
   const refotp2 = useRef(null);
