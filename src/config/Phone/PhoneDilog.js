@@ -12,10 +12,19 @@ import {
 } from "@material-ui/core";
 import { React, useState } from "react";
 import OTP from "./OTP";
+import { sendOtp } from "../Phoneauth";
 
 function PhoneDilog({ isPhoneDilogOpen, setisPhoneDilogOpen }) {
+  const [number, setNumber] = useState();
   const [error, setError] = useState(false);
   const [isdisabled, setisdisabled] = useState(false);
+
+  const sendCode = async () => {
+    const finalNumber = "+91" + number;
+    await sendOtp(finalNumber);
+    setisdisabled(!isdisabled);
+  };
+
   return (
     <div>
       <Dialog
@@ -38,7 +47,10 @@ function PhoneDilog({ isPhoneDilogOpen, setisPhoneDilogOpen }) {
                 error={error}
                 onChange={(e) => {
                   if (e.target.value.length > 10) setError(true);
-                  else setError(false);
+                  else {
+                    setError(false);
+                    setNumber(e.target.value);
+                  }
                 }}
                 inputProps={{
                   type: "number",
@@ -48,6 +60,7 @@ function PhoneDilog({ isPhoneDilogOpen, setisPhoneDilogOpen }) {
                     <InputAdornment position="start">+91</InputAdornment>
                   ),
                 }}
+                value={number}
               />
               {error ? (
                 <FormHelperText error={error}>
@@ -58,9 +71,7 @@ function PhoneDilog({ isPhoneDilogOpen, setisPhoneDilogOpen }) {
             <Box pb={4}>
               <Button
                 disabled={isdisabled}
-                onClick={() => {
-                  setisdisabled(!isdisabled);
-                }}
+                onClick={sendCode}
                 color="primary"
                 variant="contained"
                 style={{ float: "right" }}>
@@ -82,6 +93,7 @@ function PhoneDilog({ isPhoneDilogOpen, setisPhoneDilogOpen }) {
           </Box>
         </DialogContent>
       </Dialog>
+      <div id="recaptcha"></div>
     </div>
   );
 }
